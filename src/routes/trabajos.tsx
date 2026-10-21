@@ -1,0 +1,12 @@
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ContactBand, PageIntro } from '@/components/site-sections';
+import { pageHead } from '@/lib/site-data';
+import { works } from '@/lib/work-data';
+export const Route = createFileRoute('/trabajos')({ head: () => pageHead('Nuestros trabajos', 'Explorá casos ilustrativos de obras de fundación, excavación e investigación geotécnica, con su intervención y galería de imágenes.'), component: Trabajos });
+function Trabajos() {
+  const [filter, setFilter] = useState('Todos');
+  return <><PageIntro eyebrow="Nuestros trabajos" title="Cada obra, una intervención." description="El terreno, el desafío y las etapas de trabajo. Una mirada en detalle a proyectos de fundación y exploración del suelo." /><section className="section-space"><div className="site-width"><p className="work-example-note">Casos e imágenes ilustrativos. No corresponden a obras documentadas de Griguol e Hijos.</p><div className="work-filter" aria-label="Filtrar trabajos">{['Todos', ...new Set(works.map(work => work.category))].map(item => <Button key={item} variant={filter === item ? 'default' : 'outline'} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}</Button>)}</div><div className="work-list">{works.filter(work => filter === 'Todos' || work.category === filter).map(work => <article className="work-entry" key={work.id}><Link to="/trabajos/$trabajoId" params={{ trabajoId: work.id }} className="work-cover-link" aria-label={`Ver trabajo: ${work.title}`}><img src={work.cover} alt={`Imagen ilustrativa: ${work.title}`} width={1536} height={1024} loading="lazy" /><span className="work-cover-label">Caso ilustrativo · {work.number}</span></Link><div className="work-entry-copy"><div className="eyebrow">{work.category}</div><h2><Link to="/trabajos/$trabajoId" params={{ trabajoId: work.id }}>{work.title}</Link></h2><p className="body-copy">{work.summary}</p><Button asChild variant="link" className="mt-6 h-auto justify-start p-0"><Link to="/trabajos/$trabajoId" params={{ trabajoId: work.id }}>Ver trabajo <ArrowUpRight /></Link></Button></div></article>)}</div></div></section><ContactBand /></>;
+  }
