@@ -4,6 +4,7 @@ import soil from '@/assets/soil-study.jpg';
 import pilesDetail from '@/assets/piles-detail.jpg';
 import underpinningDetail from '@/assets/underpinning-detail.jpg';
 import soilSamples from '@/assets/soil-samples.jpg';
+import subimg1 from '@/assets/subimg1.jpg'
 
 export const services = [
   { number: '01', name: 'Pilotes', image: piles, images: [piles, pilesDetail], description: 'Fundaciones profundas que transmiten las cargas de la estructura a los estratos resistentes del terreno.', detail: 'Una solución de cimentación para proyectos que requieren alcanzar suelos de mayor capacidad portante. La definición del sistema parte de las condiciones del terreno y de las cargas previstas por el proyecto estructural.', points: ['Fundaciones profundas', 'Coordinación con el proyecto estructural', 'Soluciones según las condiciones del suelo'] },
