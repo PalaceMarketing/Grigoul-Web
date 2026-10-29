@@ -6,7 +6,15 @@ import underpinning from '@/assets/ggpilotes.png';
 import { ServiceCarousel } from '@/components/service-carousel';
 
 export function PageIntro({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
-  return <section className="page-intro"><div className="site-width"><div className="eyebrow">{eyebrow}</div><h1>{title}</h1><p className="body-copy">{description}</p></div></section>;
+  return (
+    <section className="page-intro !bg-primary">
+      <div className="site-width">
+        <div className="eyebrow !text-primary-foreground/80">{eyebrow}</div>
+        <h1 className="!text-primary-foreground">{title}</h1>
+        <p className="body-copy !text-primary-foreground/75">{description}</p>
+      </div>
+    </section>
+  );
 }
 export function ServicesSection() {
   return <section className="section-space"><div className="site-width"><div className="section-heading"><div><div className="eyebrow">Qué hacemos</div><h2 className="section-title">La base de cada proyecto.</h2></div><Link to="/servicios" className="flex items-center gap-3 text-xs text-primary">Conocé nuestros servicios <ArrowUpRight size={17} /></Link></div><div className="grid gap-6 md:grid-cols-3">{services.map(service => <article key={service.name} className="service-card"><ServiceCarousel name={service.name} images={service.images} /><Link to="/servicios" search={{ servicio: service.name }} className="block service-card-content"><span className="service-number">{service.number} /</span><h3>{service.name}</h3><p className="body-copy">{service.description}</p><span className="card-action">Conocer más <ArrowUpRight size={18} /></span></Link></article>)}</div></div></section>;
