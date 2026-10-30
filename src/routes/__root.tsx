@@ -115,8 +115,34 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+const paused = import.meta.env['VITE_SITE_PAUSED'] === 'true';
+
+function MaintenancePage() {
+  return (
+    <div
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        background: '#552d5c',
+        color: '#ffffff',
+        padding: '24px',
+        fontFamily: 'Arial, Helvetica, sans-serif',
+      }}
+    >
+      <h1 style={{ fontSize: '2rem', margin: 0 }}>Sitio en mantenimiento</h1>
+      <p style={{ opacity: 0.8, marginTop: '12px' }}>Volvemos pronto.</p>
+    </div>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  if (paused) return <MaintenancePage />;
 
   return (
     <QueryClientProvider client={queryClient}>
