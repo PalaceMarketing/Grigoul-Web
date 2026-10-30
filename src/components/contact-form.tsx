@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { contactSchema, contactServices } from '@/lib/contact-schema';
-import { supabase } from '@/integrations/supabase/client';
+
 
 export function ContactForm() {
   const [errors, setErrors] = useState<Partial<Record<'name' | 'email' | 'phone' | 'service' | 'message', string>>>({});
@@ -17,11 +17,17 @@ export function ContactForm() {
     if (!parsed.success) { setErrors(Object.fromEntries(parsed.error.issues.map(issue => [String(issue.path[0]), issue.message]))); return; }
     setErrors({}); setStatus('sending');
     try {
-      const id = crypto.randomUUID();
-      const { error } = await supabase.from('contact_inquiries').insert({ ...parsed.data, id });
-      if (error) { setStatus('error'); return; }
-      setReference(id.slice(0, 8).toUpperCase()); setStatus('sent'); form.reset();
-    } catch { setStatus('error'); }
+  const res = await fetch('/api/contacto', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(parsed.data),
+  });
+  if (!res.ok) { setStatus('error'); return; }
+  const data = await res.json();
+  setReference(data.reference);
+  setStatus('sent');
+  form.reset();
+} catch { setStatus('error'); }
   }
   if (status === 'sent') return <div className="form-status" role="status"><CheckCircle2 className="mb-4" /><h2 className="text-xl font-medium">Tu consulta quedó registrada.</h2><p className="mt-3 leading-relaxed">Gracias por contactarte con Griguol e Hijos.</p><p className="mt-3 text-xs">Referencia: {reference}</p><Button variant="outline" className="mt-6" onClick={() => setStatus('idle')}>Enviar otra consulta <ArrowUpRight /></Button></div>;
   return <form onSubmit={submit} noValidate className="grid gap-6"><div className="grid gap-6 sm:grid-cols-2">
