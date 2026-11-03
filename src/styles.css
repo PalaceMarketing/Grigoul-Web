@@ -282,3 +282,23 @@ h1,h2,h3 { font-family: var(--font-heading); letter-spacing: 0; }
   .footer-bottom { flex-direction: column; gap: 7px; }
 }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { transition: none !important; scroll-behavior: auto !important; } }
+
+/* Griguol: trusted companies cordon — the four real logos roll side by side. */
+.trust-band { position: relative; overflow: hidden; padding-block: 44px; border-block: 1px solid var(--border); background: var(--secondary); }
+.trust-band-inner { display: grid; justify-items: center; gap: 26px; }
+.trust-label { display: flex; align-items: center; gap: 12px; font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); }
+.trust-label::before, .trust-label::after { content: ''; width: 28px; height: 1px; background: currentColor; }
+.trust-marquee { position: relative; width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); }
+.trust-track { display: flex; width: max-content; will-change: transform; animation: trust-roll 28s linear infinite; }
+.trust-band[data-motion='reduced'] .trust-track { animation: none; width: 100%; justify-content: center; }
+.trust-band[data-motion='reduced'] .trust-logo[aria-hidden='true'] { display: none; }
+.trust-logo { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; min-width: 300px; margin: 0; }
+.trust-logo img { display: block; height: 54px; width: auto; max-width: 220px; object-fit: contain; }
+@keyframes trust-roll { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+@media (max-width: 767px) {
+  .trust-band { padding-block: 32px; }
+  .trust-logo { min-width: 200px; }
+  .trust-logo img { height: 38px; max-width: 150px; }
+}
+
+
