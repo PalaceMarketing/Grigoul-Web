@@ -6,7 +6,7 @@ import underpinningDetail from '@/assets/underpinning-detail.jpg';
 import soilSamples from '@/assets/soil-samples.jpg';
 import subimg1 from '@/assets/subimg1.jpg'
 import Nuevo1 from '@/assets/Nuevo.png'
-import Ejemplo2 from '@/assets/Ejemplo2.jpg'
+import Ejemplo2 from '@/assets/ejemplo2C.jpg'
 import Piloteraimg1 from '@/assets/piloteraimg1.jpg'
 import imgdron from '@/assets/dronpilotera1.jpg'
 import videopilotees from '@/assets/videopilotera.mp4'
