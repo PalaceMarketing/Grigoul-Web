@@ -2,6 +2,7 @@ import { Link, useRouterState } from '@tanstack/react-router';
 import { useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { WhatsAppButton } from '@/components/whatsapp';
 
 const nav = [
   { to: '/', label: 'Inicio' },
@@ -33,6 +34,7 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
+        <WhatsAppButton className="hidden h-11 rounded-sm px-4 text-xs md:inline-flex" />
         <Button asChild className="hidden h-11 rounded-sm px-5 text-xs md:inline-flex">
           <Link to="/contacto">Contactanos <ArrowUpRight /></Link>
         </Button>
@@ -47,6 +49,7 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+            <WhatsAppButton className="w-full justify-center" label="Escribinos por WhatsApp" />
           <Button asChild>
             <Link to="/contacto" onClick={() => setOpen(false)}>Contactanos <ArrowUpRight /></Link>
           </Button>

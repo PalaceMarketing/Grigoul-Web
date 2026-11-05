@@ -6,3 +6,4 @@
 - [x] Replace the supplied logo with the new vectorized logo and update the favicon.
 - [x] Verify carousel navigation and logo rendering.
 - [x] Auto-advance every carousel every 3 seconds, pausing on hover and for reduced-motion visitors.
+- [x] Botón de WhatsApp en el menú, en la franja de contacto y flotante abajo a la derecha.

@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { services } from '@/lib/site-data';
 import underpinning from '@/assets/ggpilotes.png';
 import { ServiceCarousel } from '@/components/service-carousel';
+import { WhatsAppButton } from '@/components/whatsapp';
 
 export function PageIntro({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
   return (
@@ -23,5 +24,5 @@ export function AboutSection() {
   return <section className="about-band section-space"><div className="site-width grid items-center gap-10 md:grid-cols-2 md:gap-20"><img src={underpinning} className="about-image" alt="Detalle ilustrativo de fundaciones y submuraciones" width={1200} height={912} loading="lazy" /><div><div className="eyebrow">Quiénes somos</div><h2 className="section-title">El compromiso empieza<br />desde los cimientos.</h2><p className="body-copy mt-6">En Griguol e Hijos nos dedicamos a los pilotes, las submuraciones y los estudios de suelos. Acompañamos proyectos de arquitectura y construcción con un enfoque técnico en sus fundaciones.</p><div className="mt-5">{['Un enfoque específico para cada terreno', 'Trabajo coordinado con arquitectos y profesionales', 'Compromiso con cada etapa del proyecto'].map(text => <div className="check-row" key={text}><Check />{text}</div>)}</div><Button variant="link" asChild className="mt-6 px-0"><Link to="/servicios">Conocé lo que hacemos <ArrowUpRight /></Link></Button></div></div></section>;
 }
 export function ContactBand() {
-  return <section className="cta-band"><div className="site-width flex flex-col justify-between gap-6 md:flex-row md:items-center"><div><h2>Tu próximo proyecto empieza acá.</h2><p className="mt-3 text-sm text-primary-foreground/75">Conversemos sobre el terreno y las necesidades de tu obra.</p></div><Button variant="hero" size="lg" asChild className="h-12 self-start"><Link to="/contacto">Consultar por un proyecto <ArrowRight /></Link></Button></div></section>;
+   return <section className="cta-band"><div className="site-width flex flex-col justify-between gap-6 md:flex-row md:items-center"><div><h2>Tu próximo proyecto empieza acá.</h2><p className="mt-3 text-sm text-primary-foreground/75">Conversemos sobre el terreno y las necesidades de tu obra.</p></div><div className="flex flex-wrap items-center gap-3"><Button variant="hero" size="lg" asChild className="h-12 self-start"><Link to="/contacto">Consultar por un proyecto <ArrowRight /></Link></Button><WhatsAppButton className="h-12 self-start px-6 text-xs" label="Escribinos por WhatsApp" /></div></div></section>;
 }

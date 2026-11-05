@@ -59,6 +59,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
 }
 
 :root {
@@ -301,4 +303,16 @@ h1,h2,h3 { font-family: var(--font-heading); letter-spacing: 0; }
   .trust-logo img { height: 38px; max-width: 150px; }
 }
 
-
+/* Griguol: WhatsApp — deep green so the button reads as WhatsApp without shouting. */
+:root {
+  --whatsapp: oklch(0.52 0.11 172);
+  --whatsapp-foreground: oklch(0.984 0.003 247.858);
+}
+.whatsapp-icon { width: 17px; height: 17px; flex: 0 0 auto; }
+.whatsapp-float { position: fixed; right: 22px; bottom: 22px; z-index: 50; display: inline-flex; align-items: center; gap: 9px; height: 52px; padding-inline: 18px; border-radius: 999px; background: var(--whatsapp); color: var(--whatsapp-foreground); font-size: 11px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; text-decoration: none; box-shadow: 0 12px 28px oklch(0 0 0 / 22%); transition: transform .2s, background-color .2s; }
+.whatsapp-float:hover { background: color-mix(in oklab, var(--whatsapp) 88%, black); transform: translateY(-2px); }
+.whatsapp-float .whatsapp-icon { width: 22px; height: 22px; }
+@media (max-width: 767px) {
+  .whatsapp-float { right: 14px; bottom: 14px; height: 48px; width: 48px; padding: 0; justify-content: center; }
+  .whatsapp-float span { display: none; }
+}
